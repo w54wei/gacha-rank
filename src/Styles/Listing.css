@@ -1,0 +1,30 @@
+.listing {
+    border-color: black;
+    border-style: dashed;
+    clear: both;
+    float: left;
+}
+
+.icon {
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
+}
+
+.info {
+    display: inline-block;
+}
+
+p { 
+    margin: 0 
+}
+
+.title {
+    display: inline-block;
+    width: 100px;
+}
+
+.rank {
+    display: inline-block;
+    width: 100px;
+}
