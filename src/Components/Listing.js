@@ -9,7 +9,7 @@ const Listing = ({obj, rank}) =>
         </div>
         <div className="info">    
             <p className="title">{obj.title}</p>
-            <p>Publisher: {obj.publisher}</p>     
+            <p>{obj.publisher}</p>     
             <p>Monthly Downloads: {obj.apple + obj.google}</p>
             <p>IOS Downloads: {obj.apple}</p>
             <p>Android Downloads: {obj.google}</p>
