@@ -1,7 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
-import './Styles/App.css';
+import React from 'react'
+import logo from './logo.svg'
+import './Styles/App.css'
 import Header from './Components/Header'
+import Body from './Components/Body'
 import Listing from './Components/Listing'
 
 class App extends React.Component {
@@ -74,7 +75,7 @@ class App extends React.Component {
     return (
       <div className='App'>
         <Header />
-        {info.map((obj, i) => <Listing key={obj.title} rank={++i} obj={obj}/>)}
+        <Body data={info} />
       </div>
     );
   }

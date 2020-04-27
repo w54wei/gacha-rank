@@ -1,30 +1,60 @@
-.listing {
-    border-color: black;
-    border-style: dashed;
-    clear: both;
-    float: left;
+.content {
+    border-style: solid;
+    display: inline-flex;
+    flex-direction: row;   
+    margin: 10px 10px 10px 10px;
+    height: 140px;
+    width: 430px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    order: 1;
+    max-height: 120px;
+    max-width: 120px;
+    min-width: 100px;
+    min-height: 100px;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
 .icon {
-    width: 200px;
-    height: 200px;
-    border-radius: 10%;
-}
-
-.info {
-    display: inline-block;
-}
-
-p { 
-    margin: 0 
-}
-
-.title {
-    display: inline-block;
+    border-radius: 15%;
+    order: 0;
+    height: 100px;
     width: 100px;
 }
 
 .rank {
+    order: 1;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.info {
     display: inline-block;
-    width: 100px;
+    order: 2;
+    text-align: left;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+p {
+    margin: 0;
+}
+
+a, a:visited{
+    color: blue;
+}
+
+a:hover {
+    color :red;
+}
+
+.title {
+    font-size: large;
+    font-weight: bolder;
 }
