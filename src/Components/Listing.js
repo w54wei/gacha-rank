@@ -4,19 +4,18 @@ import '../Styles/Listing.css'
 const Listing = ({obj, rank}) => 
     <div className="content">
         <div className="left">
-            <img className="icon" src={obj.img} />
+            <img className="icon" src={obj.img} alt="App icon."/>
             <p className="rank">Rank: {rank}</p>
         </div>
         <div className="info">    
             <p className="title">{obj.title}</p>
             <p>{obj.publisher}</p>     
-            <p>Monthly Downloads: {obj.apple + obj.google}</p>
             <p>IOS Downloads: {obj.apple}</p>
             <p>Android Downloads: {obj.google}</p>
             <p>Revenue: {obj.revenue}</p>
-            <a href="https://apple.com" target="_blank">iTunes</a> 
+            <a href="https://apple.com" target="_blank" rel="noopener noreferrer">iTunes</a> 
             &nbsp;
-            <a href="https://google.com" target="_blank">Google Play</a>
+            <a href="https://google.com" target="_blank" rel="noopener noreferrer">Google Play</a>
         </div>
     </div>
 

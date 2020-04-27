@@ -3,20 +3,24 @@ import logo from './logo.svg'
 import './Styles/App.css'
 import Header from './Components/Header'
 import Body from './Components/Body'
-import Listing from './Components/Listing'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      year: 0,
+      month: 0
     };
     this.getData = this.getData.bind(this);
     this.sortData = this.sortData.bind(this);
     this.updateDownloads = this.updateDownloads.bind(this);
+    this.reverseUpdateDownloads = this.reverseUpdateDownloads.bind(this);
+    this.returnDate = this.returnDate.bind(this);
   }
 
   componentDidMount() {
+    this.returnDate();
     this.getData();
   }
 
@@ -43,6 +47,12 @@ class App extends React.Component {
       })
     })
     this.sortData(newArr);
+    newArr.map((object, i) => {
+      let googleDownloads = this.reverseUpdateDownloads(object.google);
+      let appleDownloads = this.reverseUpdateDownloads(object.apple);
+      object.google = googleDownloads;
+      object.apple = appleDownloads;
+    })
     this.setState({
       data: newArr
     })
@@ -65,16 +75,64 @@ class App extends React.Component {
     }
   }
 
+  reverseUpdateDownloads(downloads) {
+    let newDownloads = String(downloads);
+    let length = newDownloads.length;
+    let count = 0;
+    for (let i = 0; i < length; ++i) {
+      if (newDownloads[i] === '0') {
+        ++count;
+      }
+    }
+    if (count >= 6) {
+      newDownloads = newDownloads.slice(0, length - 6);
+      newDownloads += 'm';
+    } else if (count >= 3) {
+      newDownloads = newDownloads.slice(0, length - 3);
+      newDownloads += 'k';
+    }
+    return newDownloads;  
+  }
+
   sortData(arr) {
     arr.sort((a, b) => parseFloat(b.google + b.apple)
                      - parseFloat(a.google + a.apple));
   }
 
+  returnDate() {
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() - 1;
+    if (month < 0) {
+      month = 11;
+    }
+    let arr = new Array();
+    arr[0] = "January";
+    arr[1] = "February";
+    arr[2] = "March";
+    arr[3] = "April";
+    arr[4] = "May";
+    arr[5] = "June";
+    arr[6] = "July";
+    arr[7] = "August";
+    arr[8] = "September";
+    arr[9] = "October";
+    arr[10] = "November";
+    arr[11] = "December";
+    let n = arr[month];
+    this.setState({
+      year: year,
+      month: n
+    })
+  }
+
   render() {
     let info = this.state.data;
+    let year = this.state.year;
+    let month = this.state.month;
     return (
       <div className='App'>
-        <Header />
+        <Header year = {year} month = {month}/>
         <Body data={info} />
       </div>
     );
