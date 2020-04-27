@@ -22,8 +22,17 @@
 .icon {
     border-radius: 15%;
     order: 0;
-    height: 100px;
-    width: 100px;
+    height: 95px;
+    width: 95px;
+}
+
+@media all and (max-width: 350px) {
+    .icon {
+        border-radius: 15%;
+        order: 0;
+        height: 50px;
+        width: 50px;
+    }
 }
 
 .rank {
