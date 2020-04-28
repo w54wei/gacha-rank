@@ -43,7 +43,9 @@ class App extends React.Component {
         publisher: object.publisher,
         revenue: object.revenue,
         title: object.title,
-        img: object.img
+        img: object.img,
+        iosLink: object.iosLink,
+        androidLink: object.androidLink
       })
     })
     this.sortData(newArr);

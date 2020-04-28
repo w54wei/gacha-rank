@@ -13,9 +13,9 @@ const Listing = ({obj, rank}) =>
             <p>IOS Downloads: {obj.apple}</p>
             <p>Android Downloads: {obj.google}</p>
             <p>Revenue: {obj.revenue}</p>
-            <a href="https://apple.com" target="_blank" rel="noopener noreferrer">iTunes</a> 
+            <a href={obj.iosLink} target="_blank" rel="noopener noreferrer">iTunes</a> 
             &nbsp;
-            <a href="https://google.com" target="_blank" rel="noopener noreferrer">Google Play</a>
+            <a href={obj.androidLink} target="_blank" rel="noopener noreferrer">Google Play</a>
         </div>
     </div>
 
