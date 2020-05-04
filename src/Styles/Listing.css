@@ -1,5 +1,7 @@
 .content {
+    background-color: lightsteelblue;
     border-style: solid;
+    border-radius: 10px;
     display: inline-flex;
     flex-direction: row;   
     margin: 10px 10px 10px 10px;
