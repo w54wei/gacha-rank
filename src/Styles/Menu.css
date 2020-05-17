@@ -1,0 +1,65 @@
+.menu {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.hBorder {
+    margin-left: 70px;
+    margin-right: 160px;
+    background: lightgray;
+    height: 2px;
+}
+
+.menuBox {
+    display: flex;
+    flex-direction: row;
+}
+
+.hRank {
+    margin-left: 70px;
+    font-weight: bold;
+}
+
+.hTitle {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.hPublisher {
+    margin-left: 330px;
+    font-weight: bold;
+}
+
+.downloads {
+    display: flex;
+    flex-direction: column;
+    margin-left: 275px;
+    font-weight: bold;
+}
+
+.downloadsBox {
+    display: flex;
+    flex-direction: row;
+    margin-top: -20px;
+    font-weight: bold;
+}
+
+.hAppleDownloads {
+    width: 50px;
+    margin-left: -10px;
+    margin-right: 40px;
+    font-weight: bold;
+}
+
+.hRevenue {
+    margin-left: 50px;
+    margin-right: 40px;
+    font-weight: bold;
+}
+
+.hLinks {
+    font-weight: bold;
+}

@@ -1,49 +1,12 @@
 .header {
-    color: blue;
     height: 100%;
+    margin-left: 5%;
+    margin-right: 11%;
+    text-align: left;
 }
 
-.menuBox {
-    display: flex;
-    flex-direction: row;
-}
-
-.menu {
-    position: sticky;
-    top: 0;
-}
-
-.hRank {
-    margin-left: 70px;
-}
-
-.hTitle {
-    margin-left: 20px;
-}
-
-.hPublisher {
-    margin-left: 330px;
-}
-
-.downloads {
-    display: flex;
-    flex-direction: column;
-    margin-left: 265px;
-}
-
-.downloadsBox {
-    display: flex;
-    flex-direction: row;
-    margin-top: -20px;
-}
-
-.hAppleDownloads {
-    width: 50px;
-    margin-left: -10px;
-    margin-right: 40px;
-}
-
-.hRevenue {
-    margin-left: 50px;
-    margin-right: 40px;
+.mBorder {
+    margin-bottom: 10px;
+    background: lightgray;
+    height: 2px;
 }

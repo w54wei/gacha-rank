@@ -1,8 +1,17 @@
 .content {
     display: flex;
     flex-direction: row;   
-    height: 100px;
+    height: 70px;
     width: 100%;
+    font-size: 16.5px;
+    margin: auto;
+}
+
+.border {
+    margin-left: 70px;
+    margin-bottom: 10px;
+    background: lightgray;
+    height: 2px;
 }
 
 .rank {
@@ -18,7 +27,7 @@
 }
 
 .title {
-    font-weight: bold;
+    font-weight: 650;
     width: 290px;
     text-align: left;
 }
@@ -32,17 +41,20 @@
 .appleDownloads {
     margin-right: 30px;
     width: 50px;
-    text-align: left;
+    text-align: right;
 }
 
 .googleDownloads {
     margin-right: 80px;
     width: 50px;
-    text-align: left;
+    text-align: right;
 }
 
 .revenue {
-    margin-right: 60px;
     width: 50px;
-    text-align: left;
+    text-align: right;
+}
+
+.itunes {
+    margin-left: 60px;
 }
