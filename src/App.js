@@ -104,6 +104,8 @@ class App extends React.Component {
   returnDate() {
     let date = new Date();
     let year = date.getFullYear();
+    
+    // Need to get previous month. Data scrapped is previous month.
     let month = date.getMonth() - 1;
     if (month < 0) {
       month = 11;

@@ -19,7 +19,7 @@ const Listing = ({obj, rank}) =>
                 <a href={obj.androidLink} target="_blank" rel="noopener noreferrer">Google Play</a>
             </p>
         </div>
-        <div className="border"></div>
+        <div className="border" />
     </div>
 
 export default Listing
