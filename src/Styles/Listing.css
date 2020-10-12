@@ -1,60 +1,103 @@
 .content {
+    align-items: center;
+    border-color: lightgrey;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: thin;
     display: flex;
     flex-direction: row;   
-    height: 70px;
-    width: 100%;
     font-size: 16.5px;
-    margin: auto;
+    height: 75px;
+    margin-bottom: 8px;
+    justify-content: center;
+    position: relative;
+    transition: top ease 2s;
+    width: 800px;
+}
+
+.content:hover {
+    box-shadow: 1px 1px 1px 1px lightgrey;
+    cursor: pointer;
+    top: -1px;
+}
+
+.content:hover .title {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .border {
-    margin-left: 70px;
-    margin-bottom: 10px;
-    background: lightgray;
-    height: 2px;
+    background: lightgrey;
+    height: 1px;
 }
 
 .rank {
-    margin-left: 50px;
-    width: 50px;
+    color: black;
+    margin-left: -50px;
+    text-align: left;
+    width: 20px;
 }
 
 .icon {
-    border-radius: 15%; 
+    border-radius: 10px; 
     height: 60px;
+    margin-left: 5px;
     width: 60px;
-    margin-right: 20px;
 }
 
 .title {
+    color: black;
     font-weight: 650;
-    width: 290px;
+    margin-left: 10px;
+    min-width: 160px;
     text-align: left;
+    width: 200px;
 }
 
 .publisher {
-    margin-right: 50px;
-    width: 300px;
+    color: black;
+    margin-left: 10px;
+    min-width: 130px;
     text-align: left;
+    width: 150px;
 }
 
 .appleDownloads {
-    margin-right: 30px;
-    width: 50px;
+    color: black;
+    margin-left: 10px;
     text-align: right;
+    width: 50px;
 }
 
 .googleDownloads {
-    margin-right: 80px;
+    color: black;
+    margin-left: 30px;
     width: 50px;
     text-align: right;
 }
 
 .revenue {
-    width: 50px;
+    color: black;
+    margin-left: 40px;
+    width: 80px;
     text-align: right;
 }
 
-.itunes {
-    margin-left: 60px;
+.bigDiv {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-name: fadein;
+    opacity: 0;
+    width: 100%;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

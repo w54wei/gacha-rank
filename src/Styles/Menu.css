@@ -1,25 +1,29 @@
 .menu {
     position: sticky;
     top: 0;
-    width: 100%;
-    background-color: white;
-    margin-bottom: 10px;
+    width: 802px;
+    background-color: white !important;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    z-index: 1;
 }
 
 .hBorder {
-    margin-left: 5%;
-    margin-right: 5%;
     background: lightgray;
-    height: 2px;
+    height: 1px;
 }
 
 .menuBox {
     display: flex;
     flex-direction: row;
+    height: 70px;
+    width: 800px;
+    font-size: 16.5px;
+    margin: 0 auto;
 }
 
 .hRank {
-    margin-left: 70px;
+    margin-left: 20px;
     font-weight: bold;
 }
 
@@ -29,15 +33,16 @@
 }
 
 .hPublisher {
-    margin-left: 330px;
+    margin-left: 240px;
     font-weight: bold;
 }
 
 .downloads {
     display: flex;
     flex-direction: column;
-    margin-left: 275px;
+    margin-left: 80px;
     font-weight: bold;
+    width: 300px;
 }
 
 .downloadsBox {
@@ -48,15 +53,19 @@
 }
 
 .hAppleDownloads {
-    width: 50px;
-    margin-left: -10px;
-    margin-right: 40px;
+    width: 100px;
+    margin-left: 80px;
+    font-weight: bold;
+}
+
+.hGoogleDownloads {
+    width: 150px;
     font-weight: bold;
 }
 
 .hRevenue {
-    margin-left: 50px;
-    margin-right: 40px;
+    margin-left: 10px;
+    margin-right: 45px;
     font-weight: bold;
 }
 

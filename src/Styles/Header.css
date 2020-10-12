@@ -1,12 +1,25 @@
 .header {
     height: 100%;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: 0 auto;
     text-align: left;
+    width: 800px;
 }
 
 .mBorder {
     margin-bottom: 10px;
     background: lightgray;
-    height: 2px;
+    height: 1px;
+}
+
+.select {
+    margin-left: 10px;
+}
+
+.sort {
+    display: inline-block;
+}
+
+.tagline {
+    font-size: 17px;
+    margin-top: -15px;
 }

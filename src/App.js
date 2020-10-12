@@ -1,146 +1,198 @@
 import React from 'react'
-import logo from './logo.svg'
 import './Styles/App.css'
 import Header from './Components/Header'
 import Body from './Components/Body'
+import Footer from './Components/Footer'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
+      sortedData: [],
       year: 0,
       month: 0
-    };
-    this.getData = this.getData.bind(this);
-    this.sortData = this.sortData.bind(this);
-    this.updateDownloads = this.updateDownloads.bind(this);
-    this.reverseUpdateDownloads = this.reverseUpdateDownloads.bind(this);
-    this.returnDate = this.returnDate.bind(this);
+    }
+    this.getData = this.getData.bind(this)
+    this.reverseRevenue = this.reverseRevenue.bind(this)
+    this.returnDate = this.returnDate.bind(this)
+    this.update = this.update.bind(this)
+    this.updateDownloads = this.updateDownloads.bind(this)
+    this.sortDownloads = this.sortDownloads.bind(this)
+    this.sortRevenue = this.sortRevenue.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
-    this.returnDate();
-    this.getData();
+    this.returnDate()
+    this.getData()
   }
 
   async getData() {
-    let response = await fetch('https://api-gacha.herokuapp.com/data');
-    let json = await response.json();
-    this.updateData(json);
+    let response = await fetch('https://api-gacha.herokuapp.com/data')
+    let data = await response.json()
+    this.updateData(data)
   }
 
-  // Data Object
-  // downloadsAndroid, downloadsIOS, publisher, revnue, title, img
+  // Set state to be data.
   async updateData(arr) {
-    let newArr = [];
+    let newArr = []
     await arr.map((object, i) => {
-      let googleDownloads = this.updateDownloads(object.google);
-      let appleDownloads = this.updateDownloads(object.apple);
+      let appleDownloads = this.update(object.appleDownloads)
+      let googleDownloads = this.update(object.googleDownloads)
+      let totalDownloads = appleDownloads + googleDownloads
+      let appleRevenue = this.update(object.appleRevenue)
+      let googleRevenue = this.update(object.googleRevenue)
+      let totalRevenueNum = appleRevenue + googleRevenue
+      let totalRevenue = this.reverseRevenue(totalRevenueNum)
       newArr.push({
-        google: googleDownloads,
-        apple: appleDownloads,
-        publisher: object.publisher,
-        revenue: object.revenue,
         title: object.title,
+        androidName: object.androidName,
+        androidUS: object.androidUS,
+        appleDownloads: this.updateDownloads(object.appleDownloads),
+        appleDownloadsNum: appleDownloads,
+        appleRevenue: object.appleRevenue,
+        appleRevenueNum : appleRevenue,
+        googleDownloads: this.updateDownloads(object.googleDownloads),
+        googleDownloadsNum: googleDownloads,
+        googleRevenue: object.googleRevenue,
+        googleRevenueNum: object.googleRevenueNum,
         img: object.img,
-        iosLink: object.iosLink,
-        androidLink: object.androidLink
+        iosName: object.iosName,
+        iosUS: object.iosUS,
+        publisher: object.publisher,
+        totalDownloads: totalDownloads,
+        totalRevenue: totalRevenue,
+        totalRevenueNum: totalRevenueNum
       })
     })
-    this.sortData(newArr);
-    newArr.map((object, i) => {
-      let googleDownloads = this.reverseUpdateDownloads(object.google);
-      let appleDownloads = this.reverseUpdateDownloads(object.apple);
-      object.google = googleDownloads;
-      object.apple = appleDownloads;
-    })
-    this.setState({
+    this.setState ({
       data: newArr
     })
+    this.sortDownloads()
   }
 
-  updateDownloads(downloads) {
-    let newDownloads = downloads;
-    if (downloads.slice(-1) === 'k') {
-       newDownloads = downloads.slice(0, -1);
-       newDownloads += '000';
-       newDownloads = Number(newDownloads);
-       return newDownloads;
-    } else if (downloads.slice(-1) === 'm') {
-      newDownloads = downloads.slice(0, -1);
-      newDownloads += '000000';
-      newDownloads = Number(newDownloads);
-      return newDownloads;
+  update(stat) {
+    let newStat = stat
+    if (stat[0] === '<' || stat[0] === '$') stat = stat.substring(1)
+    if (stat.slice(-1) === 'k') {
+       newStat = stat.slice(0, -1)
+       newStat += '000'
+       newStat = Number(newStat)
+       return newStat
+    } else if (stat.slice(-1) === 'm') {
+      newStat = stat.slice(0, -1)
+      newStat += '000000'
+      newStat = Number(newStat)
+      return newStat
     } else {
-      return downloads;
+      return stat
     }
   }
 
-  reverseUpdateDownloads(downloads) {
-    let newDownloads = String(downloads);
-    let length = newDownloads.length;
-    let count = 0;
-    for (let i = 0; i < length; ++i) {
-      if (newDownloads[i] === '0') {
-        ++count;
+  updateDownloads(download) {
+      let newDownload = download
+      if (download.slice(-1) === 'k') {
+        newDownload = download.slice(0, -1)
+        newDownload += ' K'
+      } else if (download.slice(-1) === 'm') {
+        newDownload = download.slice(0, -1)
+        newDownload += ' M'
       }
-    }
-    if (count >= 6) {
-      newDownloads = newDownloads.slice(0, length - 6);
-      newDownloads += 'm';
-    } else if (count >= 3) {
-      newDownloads = newDownloads.slice(0, length - 3);
-      newDownloads += 'k';
-    }
-    return newDownloads;  
+      return newDownload
   }
 
-  sortData(arr) {
-    arr.sort((a, b) => parseFloat(b.google + b.apple)
-                     - parseFloat(a.google + a.apple));
+  reverseRevenue(revenue) {
+    let newRevenue = String(revenue)
+    if (newRevenue.length === 7) {
+      newRevenue = newRevenue.slice(0, newRevenue.length - 5)
+      newRevenue = newRevenue[0] + '.' + newRevenue[1]
+      newRevenue += ' M'
+    } else if (newRevenue.length >= 7) {
+      newRevenue = newRevenue.slice(0, newRevenue.length - 6)
+      newRevenue += ' M'
+    } else if (newRevenue >= 6) {
+      newRevenue = newRevenue.slice(0, newRevenue.length - 3)
+      newRevenue += ' K'
+    }
+    newRevenue = '$' + newRevenue
+    return newRevenue
+  }
+
+  sortDownloads() {
+    let arr = this.state.data
+    arr.sort((a, b) => parseFloat(b.totalDownloads)
+                     - parseFloat(a.totalDownloads))
+    arr = arr.slice(0, 50)
+    this.setState({
+      sortedData: arr
+    })
+  }
+
+  sortRevenue() {
+    let arr = this.state.data
+    arr.sort((a, b) => parseFloat(b.totalRevenueNum)
+                     - parseFloat(a.totalRevenueNum))
+    arr = arr.slice(0, 50)
+    this.setState({
+      sortedData: arr
+    })
   }
 
   returnDate() {
-    let date = new Date();
-    let year = date.getFullYear();
+    let date = new Date()
+    let year = date.getFullYear()
     
     // Need to get previous month. Data scrapped is previous month.
-    let month = date.getMonth() - 1;
+    let month = date.getMonth() - 1
     if (month < 0) {
-      month = 11;
+      month = 11
     }
-    let arr = new Array();
-    arr[0] = "January";
-    arr[1] = "February";
-    arr[2] = "March";
-    arr[3] = "April";
-    arr[4] = "May";
-    arr[5] = "June";
-    arr[6] = "July";
-    arr[7] = "August";
-    arr[8] = "September";
-    arr[9] = "October";
-    arr[10] = "November";
-    arr[11] = "December";
-    let n = arr[month];
+    let arr = []
+    arr[0] = 'Jan'
+    arr[1] = 'Feb'
+    arr[2] = 'Mar'
+    arr[3] = 'April'
+    arr[4] = 'May'
+    arr[5] = 'June'
+    arr[6] = 'July'
+    arr[7] = 'Aug'
+    arr[8] = 'Sept'
+    arr[9] = 'Oct'
+    arr[10] = 'Nov'
+    arr[11] = 'Dec'
+    let n = arr[month]
     this.setState({
       year: year,
       month: n
     })
   }
 
+  handleChange(event) {
+    switch(event.target.value) {
+      case '0':
+        this.sortDownloads()
+        break
+      case '1':
+        this.sortRevenue()
+        break
+      default:
+        this.sortDownloads()
+    }
+  }
+
   render() {
-    let info = this.state.data;
-    let year = this.state.year;
-    let month = this.state.month;
+    let sortedData = this.state.sortedData
+    let year = this.state.year
+    let month = this.state.month
     return (
       <div className='App'>
-        <Header year = {year} month = {month}/>
-        <Body data={info} />
+        <Header year = {year} month = {month} handleChange = {this.handleChange} />
+        <Body data = {sortedData} />
+        <Footer />
       </div>
     );
   }
 }
 
-export default App;
+export default App

@@ -1,6 +1,4 @@
 .body {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: center;
+    margin: 0 auto;
+    width: 800px;
 }
