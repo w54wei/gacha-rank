@@ -6,7 +6,6 @@
 }
 
 .mBorder {
-    margin-bottom: 10px;
     background: lightgray;
     height: 1px;
 }
@@ -17,9 +16,10 @@
 
 .sort {
     display: inline-block;
+    margin-top: -20px;
 }
 
 .tagline {
     font-size: 17px;
-    margin-top: -15px;
+    margin-top: -20px;
 }

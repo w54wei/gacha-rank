@@ -1,13 +1,13 @@
 .content {
     align-items: center;
     border-color: lightgrey;
-    border-radius: 10px;
+    border-radius: 3px;
     border-style: solid;
     border-width: thin;
     display: flex;
     flex-direction: row;   
     font-size: 16.5px;
-    height: 75px;
+    height: 67px;
     margin-bottom: 8px;
     justify-content: center;
     position: relative;
@@ -21,11 +21,13 @@
     top: -1px;
 }
 
+/*
 .content:hover .title {
     color: blue;
     cursor: pointer;
-    text-decoration: underline;
-}
+    text-decoration: underline; 
+} 
+*/
 
 .border {
     background: lightgrey;
@@ -34,7 +36,9 @@
 
 .rank {
     color: black;
-    margin-left: -50px;
+    font-weight: bold;
+    margin-left: -20px;
+    margin-right: 5px;
     text-align: left;
     width: 20px;
 }
@@ -48,7 +52,7 @@
 
 .title {
     color: black;
-    font-weight: 650;
+    font-weight: bold;
     margin-left: 10px;
     min-width: 160px;
     text-align: left;
@@ -65,22 +69,25 @@
 
 .appleDownloads {
     color: black;
+    font-weight: bold;
     margin-left: 10px;
     text-align: right;
-    width: 50px;
+    width: 60px;
 }
 
 .googleDownloads {
     color: black;
-    margin-left: 30px;
-    width: 50px;
+    font-weight: bold;
+    margin-left: 40px;
+    width: 60px;
     text-align: right;
 }
 
 .revenue {
     color: black;
+    font-weight: bold;
     margin-left: 40px;
-    width: 80px;
+    width: 70px;
     text-align: right;
 }
 
