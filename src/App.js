@@ -143,24 +143,11 @@ class App extends React.Component {
     let date = new Date()
     let year = date.getFullYear()
     
-    // Need to get previous month. Data scrapped is previous month.
-    let month = date.getMonth() - 1
-    if (month < 0) {
-      month = 11
-    }
-    let arr = []
-    arr[0] = 'Jan'
-    arr[1] = 'Feb'
-    arr[2] = 'Mar'
-    arr[3] = 'April'
-    arr[4] = 'May'
-    arr[5] = 'June'
-    arr[6] = 'July'
-    arr[7] = 'Aug'
-    arr[8] = 'Sept'
-    arr[9] = 'Oct'
-    arr[10] = 'Nov'
-    arr[11] = 'Dec'
+    // Get month.
+    let month = date.getMonth()
+
+    let arr = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 
+               'Sept', 'Oct', 'Nov', 'Dec']
     let n = arr[month]
     this.setState({
       year: year,
