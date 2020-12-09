@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      let host = "www.gacharank.com" || "gacharank.com";
+      if ((host == window.location.host) && (window.location.protocol != "https:")) {
+        window.location.href = "https://www.gacharank.com";
+      }
+    </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162538032-3"></script>
     <script>
@@ -9,12 +15,6 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-162538032-3');
-    </script>
-    <script>
-      let host = "www.gacharank.com" || "gacharank.com";
-      if ((host == window.location.host) && (window.location.protocol != "https:")) {
-        window.location.href = "https://www.gacharank.com";
-      }
     </script>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
