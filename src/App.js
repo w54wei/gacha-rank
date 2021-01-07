@@ -3,6 +3,7 @@ import './Styles/App.css'
 import Header from './Components/Header'
 import Body from './Components/Body'
 import Footer from './Components/Footer'
+import ReactGA from 'react-ga'
 
 class App extends React.Component {
   constructor(props) {
@@ -26,6 +27,8 @@ class App extends React.Component {
   componentDidMount() {
     this.returnDate()
     this.getData()
+    ReactGA.initialize('UA-162538032-3')
+    ReactGA.pageview(window.location.pathname + window.location.search)
   }
 
   async getData() {
