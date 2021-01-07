@@ -28,7 +28,7 @@ class App extends React.Component {
     this.returnDate()
     this.getData()
     ReactGA.initialize('UA-162538032-3')
-    ReactGA.pageview(window.location.pathname + window.location.search)
+    ReactGA.pageview('/')
   }
 
   async getData() {
